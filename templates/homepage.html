@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+
+<head>
+    <title>Music Player Website</title>
+    <link rel="stylesheet" href="{% static 'homepage.css' %}">
+</head>
+
+<body>
+    <header>
+        <nav>
+        
+            <h1>Music Player Website</h1>
+            <ul>
+                <li><a href="/moodSelect/{{fname}}">Home</a></li>
+                <li><a href="/moodSelect/about">About</a></li>
+                <!-- <li><a href="/contact">Contact</a></li> -->
+            </ul>
+        
+           
+        </nav>
+        <div style="padding-right: 50px;">
+            <a class = "lgot" href="{% url 'signout' %}">Logout</a>
+        </div>
+    </header>
+    <main>
+        
+        <section class="mood-carousel">
+            <h2><div>
+                Hey {{ fname }}!
+            </div>
+                <div>
+
+                Need Help to Discover Song as per your Mood? We got your back!
+                Just Tell us, How you are feeling?
+            </div></h2>
+            <div class="carousel-container">
+                <a href="\moodSelect/happysongs">
+                    <div class="carousel-item">
+                        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js">
+
+                        </script>
+                        <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_ggw4qc1o.json"  background="transparent"  speed="1"  style="width: 250px; height: 300px;"  loop  autoplay></lottie-player>
+                        <h3>Happy</h3>
+                    </div>
+                </a>
+                <a href="\moodSelect/relaxingsongs">
+                    <div class="carousel-item">
+                        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js">
+
+                        </script>
+                        <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_bwncrbab.json"  background="transparent"  speed="1"  style="width: 250px; height: 300px;"  loop  autoplay></lottie-player>
+                        <h3>Relaxing</h3>
+                    </div>
+                </a>
+                <a href="\moodSelect/sadsongs">
+                    <div class="carousel-item">
+                        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js">
+
+                        </script>
+                        <lottie-player src="https://assets7.lottiefiles.com/private_files/lf30_aprp5fnm.json"  background="transparent"  speed="1"  style="width: 250px; height: 250px;"  loop  autoplay></lottie-player>
+                        <h3>Sad</h3>
+                    </div>
+                </a>
+                <a href="\moodSelect/energeticsongs">
+                    <div class="carousel-item">
+                        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js">
+
+                        </script>
+                        <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_n1oyepxw.json"  background="transparent"  speed="1"  style="width: 250px; height: 300px;"  loop  autoplay></lottie-player>
+                        <h3>Energetic</h3>
+                    </div>
+                </a>
+            </div>
+        </section>
+        <!-- <section class="song-list">
+            <h2>Top Songs</h2>
+            <ul>
+                <li>
+                    <img src=" static 'test.webp' " alt="Song 1">
+                    <h3>Song 1</h3>
+                    <p>Artist 1</p>
+                </li>
+                <li>
+                    <img src="static/test.webp" alt="Song 2">
+                    <h3>Song 2</h3>
+                    <p>Artist 2</p>
+                </li>
+                <li>
+                    <img src="static/media/test.webp" alt="Song 3">
+                    <h3>Song 3</h3>
+                    <p>Artist 3</p>
+                </li>
+                <li>
+                    <img src="static/media/test.webp" alt="Song 4">
+                    <h3>Song 4</h3>
+                    <p>Artist 4</p>
+                </li>
+            </ul>
+        </section>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel debitis quis quod illum pariatur. Quaerat a cum magni placeat nam. Dolores dignissimos, repellat perspiciatis ratione quo voluptatibus in molestias assumenda eos harum dolore commodi voluptate eveniet optio placeat exercitationem debitis fugiat illo voluptas. Velit, obcaecati omnis perspiciatis debitis autem ipsam numquam nostrum commodi officia pariatur et cupiditate accusamus, quam aliquid quod quasi tempore quos eos tempora voluptates a. Porro hic aliquid nam vitae libero provident eligendi necessitatibus ipsum incidunt suscipit! A quia minus cum dicta dignissimos ex dolore tempore facere, eaque cupiditate dolor beatae vitae sit tempora consectetur omnis? Facilis, corrupti, quia similique dolore recusandae quae magnam nemo voluptatem adipisci omnis velit. Iste quo iusto quis ad maxime tenetur illo repudiandae minima vitae? Cupiditate tempore nesciunt sint beatae, architecto deserunt molestias itaque, saepe dolore non, magni consequatur distinctio nihil. Asperiores aut molestias, consequuntur distinctio aperiam voluptates assumenda accusantium neque nisi magnam harum sunt necessitatibus corporis, laborum quo hic debitis dignissimos illo temporibus dolor rem? Odio cupiditate nesciunt illum facilis consectetur, distinctio ducimus natus soluta facere dolorem quidem maiores, earum libero aspernatur aut culpa exercitationem labore velit non ipsam accusantium saepe fugit? Rerum adipisci eius iusto recusandae modi accusantium molestiae temporibus, suscipit delectus! Accusantium commodi molestiae quis. Beatae, cum hic. Corrupti earum repellat quis quisquam eos at accusamus quos in delectus quaerat amet illum unde sequi non, modi nulla aspernatur, quia deserunt sunt debitis, maxime nobis itaque laudantium! Repellendus, corporis ipsum. Reprehenderit, alias! A, totam veniam ad distinctio nobis odit mollitia minus, sapiente deleniti illo asperiores aperiam iste. Perferendis, numquam obcaecati? Et debitis mollitia soluta veniam dolore corrupti amet voluptatem natus officia dolor magnam aperiam quasi reiciendis sed similique iusto, praesentium fugit nihil doloribus blanditiis temporibus quod architecto explicabo inventore. Aut deleniti corrupti odio cum unde dolore quo voluptatem facere qui quia. Laboriosam enim nobis, aliquid autem saepe architecto dignissimos. Odit in veritatis cupiditate maxime, at quod obcaecati rem fugiat pariatur qui sapiente perspiciatis sit quisquam neque amet eligendi similique quam labore. Veritatis minus consectetur molestiae rem ea debitis ducimus quisquam tempore, omnis veniam natus odit quaerat sapiente sequi nulla nam maxime nemo a quasi illum labore nesciunt praesentium. Excepturi perspiciatis fugiat iste officia atque earum qui soluta. Obcaecati architecto perferendis fugiat dolor ullam libero eveniet minima quo assumenda laborum, dicta exercitationem? Aliquam impedit numquam, esse quam minus officia fuga quaerat illum. Sint dolore ipsa cum earum. Natus, dicta iure veritatis autem iste quasi excepturi, ex necessitatibus facilis, aut alias corporis? Facilis, eveniet! Iste necessitatibus nobis, nemo vero, ab esse sequi hic doloribus odio unde quidem atque, exercitationem voluptatum officia fugiat totam tempore corrupti eligendi perferendis nihil! Recusandae aspernatur incidunt doloribus vero maxime dignissimos exercitationem officiis perspiciatis alias ab? Repudiandae, perspiciatis quibusdam. Ad, velit obcaecati nesciunt earum aut accusantium ipsum aspernatur optio a harum excepturi dolorem inventore fugiat, adipisci eum eos magni porro ab. Voluptatibus autem nesciunt similique recusandae ad molestias assumenda eum hic quam dolores asperiores omnis, mollitia sunt magnam at, iusto tempore placeat cupiditate, qui minima fugiat laudantium? Quos. -->
+    </main>
+    <footer>
+        <p>Copyright © Music Player Website</p>
+    </footer>
+</body>
+
+</html>

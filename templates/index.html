@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+	<title>Slide Navbar</title>
+	<link rel="stylesheet" type="text/css" href=" {% static 'style.css' %} ">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+	<div class="main"> 
+		<p class="hd"> For the Music You Deserve! 	</p>
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+			<div class="signup">
+				<form method="POST" action="/signup">
+					{% csrf_token %}
+					<label for="chk" aria-hidden="true">Sign up</label>
+					<input class = "inp" type="text" placeholder="First name" id="fname" name="fname" >
+					<input class = "inp" type="text" placeholder="Last name" id="lname" name="lname" >
+					<input type="text" name="username" placeholder="User name" >
+					<input type="email" name="email" placeholder="Email" >
+					<input type="password" name="password" placeholder="Password">
+					<input class = "inp" type="password" placeholder = "Confirm Password" id="confirm-password" name="confirm-password" >
+
+					<button>Sign up</button>
+				</form>
+			</div>
+
+			<div class="login">
+				<form method="POST" action="/signin">
+					{% csrf_token %}
+					<label for="chk" aria-hidden="true">Login</label>
+					<input type="username" name="username" placeholder="Username" >
+					<input type="password" name="password" placeholder="Password" >
+					<button>Login</button>
+					<p class="hd"> {{message}}	</p>
+
+				</form>
+			</div>
+	</div>
+</body>
+<script>
+	const loginForm = document.querySelector('.login form');
+	const signupForm = document.querySelector('.signup form');
+	
+	// Function for validating the login form
+	function validateLogin() {
+	  const usernameInput = loginForm.querySelector('input[name="username"]');
+	  const passwordInput = loginForm.querySelector('input[name="pswd"]');
+	  
+	  if (usernameInput.value.trim() === '') {
+		alert('Please enter a valid username.');
+		return false;
+	  }
+	  
+	  if (passwordInput.value.trim() === '') {
+		alert('Please enter a valid password.');
+		return false;
+	  }
+	  
+	  return true;
+	}
+	
+	// Function for validating the signup form
+	function validateSignup() {
+	  const firstNameInput = signupForm.querySelector('input[name="fname"]');
+	  const lastNameInput = signupForm.querySelector('input[name="lname"]');
+	  const usernameInput = signupForm.querySelector('input[name="username"]');
+	  const emailInput = signupForm.querySelector('input[name="email"]');
+	  const passwordInput = signupForm.querySelector('input[name="password"]');
+	  const confirmPasswordInput = signupForm.querySelector('input[name="confirm-password"]');
+	  
+	  if (firstNameInput.value.trim() === '') {
+		alert('Please enter a valid first name.');
+		return false;
+	  }
+	  
+	  if (lastNameInput.value.trim() === '') {
+		alert('Please enter a valid last name.');
+		return false;
+	  }
+	  
+	  if (usernameInput.value.trim() === '') {
+		alert('Please enter a valid username.');
+		return false;
+	  }
+	  
+	  if (emailInput.value.trim() === '') {
+		alert('Please enter a valid email address.');
+		return false;
+	  }
+	  
+	  if (passwordInput.value.trim() === '') {
+		alert('Please enter a valid password.');
+		return false;
+	  }
+	  
+	  if (confirmPasswordInput.value.trim() === '') {
+		alert('Please confirm your password.');
+		return false;
+	  }
+	  
+	  if (passwordInput.value !== confirmPasswordInput.value) {
+		alert('Passwords do not match. Please try again.');
+		return false;
+	  }
+	  
+	  return true;
+	}
+	
+	// Add event listener to forms
+	loginForm.addEventListener('submit', function(event) {
+	  if (!validateLogin()) {
+		event.preventDefault();
+	  }
+	});
+	
+	signupForm.addEventListener('submit', function(event) {
+	  if (!validateSignup()) {
+		event.preventDefault();
+	  }
+	});
+</script>
+</html>

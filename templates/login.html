@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% load static %}
+
+  <title>Login Page</title>
+  <link rel="stylesheet" href="{% static 'login.css' %}">
+  <script>
+    function login() {
+  var username = document.getElementById("username").value;
+  var password = document.getElementById("password").value;
+  if (!username){
+    alert("Username Cannot be Empty"); 
+    return False
+  }
+  if (!password){
+    alert("Password Cannot be Empty"); 
+    return False
+  }
+  // Perform validation and login logic here
+  // This is just an example, and would need to be customized for your needs
+  
+ 
+}
+
+  </script>
+</head>
+<body>
+  <header>
+    <nav>
+        <h1>Music Player Website</h1>
+        <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    
+       
+    </nav>
+    
+  </header>
+  <div class="container">
+    <h1>Login Page</h1>
+    <form method = "POST" action = "/signin">
+      {% csrf_token %}
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit" onclick="login()">Login</button>
+    </form>
+  </div>
+  
+  <!-- <script src="script.js"></script> -->
+</body>
+</html>

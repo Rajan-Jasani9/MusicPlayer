@@ -1,0 +1,41 @@
+{% extends 'basic.html' %}
+{% load static %}
+
+
+{% block css %}
+
+
+#footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    background:none;
+}
+p{
+    margin:0;
+    padding:2px;
+}
+{% endblock css %}
+{% block body %}
+
+    <div>
+        We are a group of music enthusiasts who are passionate about sharing our love for music with the world. Our goal is to provide a platform for music lovers to discover new music, connect with other music fans, and share their own music experiences.
+
+Whether you're into rock, hip-hop, pop, or any other genre, we've got something for you. Browse our extensive collection of songs, create your own playlists, and join our community of music lovers today!
+<br><br><br>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <p>Solely Developed by:</p> 
+        <p>200420107113 - Devang Thesiya (Frontend)</p>         
+        <p>200420107135 - Rajan Jasani (Backend) </p> 
+        
+    </div>
+  
+{% endblock body %}
+
+{% block arg %}{{fname}}{% endblock arg %} 

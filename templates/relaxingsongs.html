@@ -1,0 +1,175 @@
+{% extends "basic.html" %}
+
+{% block css %}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background:none;
+    font-size: 14px;
+    text-align: left;
+}
+table, th, td {
+    border: none;
+    padding: 8px;
+}
+th {
+    <!-- background-color: #333; -->
+    color: white;
+    border-bottom:2px solid #B9A7BB;
+}
+tr:nth-child(even) {
+    <!-- background-color: #f2f2f2; -->
+}
+.bottom{
+    display: flex;  
+    position: fixed; 
+    height: 90px;
+    width:100%;
+    background:none;
+    color: white;
+    bottom: 0;
+    justify-content  : center;
+    align-items: center;
+    flex-direction: column;
+}
+#mprogressbar{
+    height:3px;
+    width: 40vw;
+    cursor: pointer;
+}
+.icons{
+    margin-top: 14px;
+}
+.icons i{
+    cursor: pointer;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+i{
+    background:none;
+}
+
+.timestamp{
+    margin: 0 23px;
+}
+.timestamp i{
+    cursor: pointer;
+}
+{% endblock css %}
+
+
+
+{% block body %}
+    <!-- {% for song in songs %}
+        <p>{{ song.title }}</p>
+    {% endfor %}   -->
+    <table>
+        <thead>
+            <tr>
+                <th>Sr.</th>
+                <th>Title</th>
+                <th>Artist</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for song in songs %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ song.title }}</td>
+                <td>{{ song.artist }}</td>
+                <td><button onclick="playSong('{{ song.filepath}}','{{song.title}}')">   <i class="fa-solid fa-1x fa-play" class="masterplay"></i>
+                </button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    <div class="bottom"> 
+        <input type="range" name="range" id="mprogressbar" min="0" value="0" max ="100">
+        <div class="icons">
+            <!-- fontawesome icons -->
+            <i class="fa-solid fa-1x fa-backward-step"></i>
+            <i class="fa-solid fa-1x fa-play" id="masterplay"></i>
+            <i class="fa-solid fa-1x fa-forward-step"></i>
+        </div>
+
+        <div class="songinfo">
+            <div id ="current_song"> </div> 
+        </div> 
+    </div>
+{% endblock body %}
+{% block script %}
+
+let audioElement = null;
+
+function playSong(filepath, title) {
+
+
+    if (audioElement){
+        audioElement.pause()
+        audioElement.currentTime =0
+    }
+    var src = filepath;
+    console.log(src);
+    audioElement = new Audio(src);
+
+    // Remove the canplay event listener from the new Audio object
+    // and add it to the existing Audio object (if there is one)
+    if (audioElement.readyState >= 2) {
+        onCanPlay();
+    } else {
+        audioElement.addEventListener('canplay', onCanPlay);
+    }
+
+    function onCanPlay() {
+        audioElement.removeEventListener('canplay', onCanPlay);
+        audioElement.addEventListener('timeupdate', ()=> {
+            // console.log('timeupdate');
+            progress = parseInt((audioElement.currentTime/audioElement.duration)*100 );
+            // console.log(progress);
+            mprogressbar.value = progress;
+        } );
+        audioElement.play();
+        masterplay.classList.remove('fa-play');
+        masterplay.classList.add('fa-pause');
+    }
+
+    var curr = document.getElementById("current_song")
+    curr.innerHTML = title;
+    var masterplay = document.getElementById('masterplay');
+
+    masterplay.addEventListener('click', ()=>{
+        if(audioElement.paused  ){
+             // Pause and reset the current Audio object, if there is one
+        
+            audioElement.play();
+            masterplay.classList.remove('fa-play');
+            masterplay.classList.add('fa-pause');
+        }
+        else{
+            audioElement.pause();
+            masterplay.classList.remove('fa-pause');
+            masterplay.classList.add('fa-play');
+        }
+    });
+
+    // Reset the progress bar to 0
+    mprogressbar.value = 0;
+
+    mprogressbar.addEventListener('change',()=> {
+        audioElement.currentTime = (mprogressbar.value * audioElement.duration) / 100
+    });
+}
+    
+
+{% endblock script %}
+
+
+
+{% block scrtag %}
+<script src="https://kit.fontawesome.com/ab6a6a493c.js" crossorigin="anonymous"></script>
+{% endblock scrtag %}
+{% block arg %}{{fname}}{% endblock arg %} 

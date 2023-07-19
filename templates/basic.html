@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+
+<head>
+    <title>Music Player Website</title>
+    <link rel="stylesheet" href="{% static 'homepage.css' %}">
+    
+</head>
+<style>
+    {% block css %}
+    
+    {% endblock css %}
+</style>
+<body>
+    <header>
+        <nav>
+        
+            <h1>Music Player Website</h1>
+            <ul>
+                <li><a href="\moodSelect/{% block arg %}{% endblock arg %}">Home</a></li>
+                <li><a href="/moodSelect/about">About</a></li>
+                <!-- <li><a href="/moodSelect/contact">Contact</a></li> -->
+            </ul>
+        
+           
+        </nav>
+        <div style="padding-right: 50px;">
+            <a class = "lgot" href="{% url 'signout' %}">Logout</a>
+        </div>
+    </header>
+    <main>
+        {% block body %}
+
+        {% endblock body %}
+        
+    </main>
+    
+
+</body>
+<script>
+    {% block script %}
+        
+{% endblock script %}
+    </script>
+
+    
+{% block scrtag %}
+
+{% endblock scrtag %}
+</html>
